@@ -1,7 +1,5 @@
 <?php
-class Model
-{
-	public function get_data()
-	{
-	}
+class Model {
+	//Класс модели содержит пустой метод выборки данных для переопределения в классах потомках
+	public function get_data(){}
 }

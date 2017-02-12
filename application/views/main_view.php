@@ -1,7 +1,11 @@
 <div class="col-md-12">
 	<h1><?=	$data['name'] ?></h1>
-	<?php foreach($data as $key => $row) {?>
-			<?php switch ($key) {
+	<?php
+		// Перебираем все элементы массива (разделы ответа на запрос)
+		foreach($data as $key => $row) {?>
+			<?php
+				// В зависимоти от ключа (названия раздела) выводим различные значения
+				switch ($key) {
 				case 'main':?>
 					<div>
 						<label>Температура</label>

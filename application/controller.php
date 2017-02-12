@@ -3,10 +3,11 @@ class Controller {
 	public $model;
 	public $view;
 
+	// Конструктор
 	function __construct() {
 		$this->view = new View();
 	}
 
-	function action_index() {
-	}
+	// Действие, вызываемое по умолчанию, переопределяется при создании классов потомков
+	function action_index() {}
 }

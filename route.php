@@ -12,7 +12,7 @@ class Route {
 			$controller_name = $routes[1];
 		}
 
-		// получаем имя экшена
+		// получаем имя действия
 		if ( !empty($routes[2]) ) {
 			$action_name = $routes[2];
 		}
@@ -22,25 +22,20 @@ class Route {
 		$controller_name = 'Controller_'.$controller_name;
 		$action_name = 'action_'.$action_name;
 
-		// подцепляем файл с классом модели (файла модели может и не быть)
-
+		// подцепляем файл с классом модели, если он есть
 		$model_file = strtolower($model_name).'.php';
 		$model_path = "application/models/".$model_file;
 		if(file_exists($model_path)) {
 			include "application/models/".$model_file;
 		}
 
-		// подцепляем файл с классом контроллера
+		// подцепляем файл с классом контроллера, если он есть
 		$controller_file = strtolower($controller_name).'.php';
 		$controller_path = "application/controllers/".$controller_file;
 		if(file_exists($controller_path)) {
 			include "application/controllers/".$controller_file;
 		}
 		else {
-			/*
-			правильно было бы кинуть здесь исключение,
-			но для упрощения сразу сделаем редирект на страницу 404
-			*/
 			Route::ErrorPage404();
 		}
 
@@ -53,13 +48,11 @@ class Route {
 			$controller->$action();
 		}
 		else {
-			// здесь также разумнее было бы кинуть исключение
 			Route::ErrorPage404();
 		}
 	}
 
-	function ErrorPage404()
-	{
+	function ErrorPage404() {
         $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
         header('HTTP/1.1 404 Not Found');
 		header("Status: 404 Not Found");

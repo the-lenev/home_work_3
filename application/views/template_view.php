@@ -10,7 +10,10 @@
 </head>
 <body>
 	<div class="container">
-		<?php include 'application/views/'.$content_view; ?>
+		<?php
+			// Подключаем внутренний шаблон для текущей страницы
+			include 'application/views/'.$content_view;
+		?>
 	</div>
 </body>
 </html>
